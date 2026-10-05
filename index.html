@@ -23,7 +23,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
 <!-- Datos del negocio (Google los usa para resultados enriquecidos y búsqueda local) -->
 <script type="application/ld+json">
@@ -216,30 +216,40 @@
   @media(max-width:860px){.treat-intro{grid-template-columns:1fr;justify-items:center;text-align:center}.treat-media{max-width:300px}}
 
   /* Reseñas */
-  .reviews-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;animation:fadeup .6s ease both}
+  .reviews-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;animation:fadeup .6s ease both}
   .reviews-grid:empty{display:none}
   @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .review-card{flex:1 1 270px;max-width:370px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem 1.8rem;display:flex;flex-direction:column}
-  .stars{display:inline-flex;gap:.18rem;color:var(--gold);margin-bottom:1.1rem}
-  .stars svg{width:.95rem;height:.95rem;fill:currentColor}
-  .review-text{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.18rem;line-height:1.45;color:var(--espresso);flex:1}
-  .review-author{margin-top:1.3rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
   .reviews-cta{text-align:center;margin-top:clamp(2.2rem,5vw,3rem);display:flex;flex-direction:column;align-items:center;gap:1.1rem}
   .reviews-cta p{color:var(--mocha);font-size:.98rem}
-  .stars .off{opacity:.25}
-  .review-text{display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
-  .review-card.open .review-text{display:block}
-  .review-more{align-self:flex-start;margin-top:.6rem;background:none;border:0;padding:0;font:inherit;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);cursor:pointer}
-  .review-author a{color:inherit;text-decoration:none}
-  .review-author a:hover{text-decoration:underline}
-  .review-when{display:block;margin-top:.3rem;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--mocha);font-weight:400}
-  .g-summary{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.2rem;padding:.5rem 1.1rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--espresso);font-size:.92rem;text-decoration:none}
-  .g-summary strong{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--gold-deep);line-height:1}
-  .g-summary .stars{margin:0}
-  .g-summary[hidden],.g-attr[hidden]{display:none}
   .reviews-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
   .reviews-cta .g-attr{font-size:.78rem}
   .g-attr a{color:inherit}
+  .g-attr[hidden]{display:none}
+  /* Reseñas con el aspecto de Google (datos reales de la ficha de Maps) */
+  .gr{font-family:Roboto,Arial,sans-serif;color:#202124}
+  .gr-summary{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem 1.1rem;width:fit-content;max-width:100%;margin:0 auto 1.6rem;background:#fff;border:1px solid #dadce0;border-radius:12px;padding:.85rem 1.4rem;text-decoration:none;box-shadow:0 1px 2px rgba(60,64,67,.12)}
+  .gr-summary[hidden]{display:none}
+  .gr-summary:hover{box-shadow:0 2px 6px rgba(60,64,67,.2)}
+  .gr-brand{display:flex;align-items:center;gap:.5rem;font-size:1rem;font-weight:500;color:#202124}
+  .gr-g{width:22px;height:22px;flex:none}
+  .gr-score{display:flex;align-items:center;gap:.45rem}
+  .gr-score b{font-size:1.45rem;font-weight:500;color:#202124;line-height:1}
+  .gr-count{font-size:.9rem;color:#1a73e8}
+  .gr-stars{display:inline-flex;gap:1px;color:#fbbc04}
+  .gr-stars svg{width:18px;height:18px;fill:currentColor}
+  .gr-stars .off{color:#dadce0}
+  .gr-card{flex:1 1 270px;max-width:370px;background:#fff;border:1px solid #dadce0;border-radius:12px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.6rem;box-shadow:0 1px 2px rgba(60,64,67,.12)}
+  .gr-head{display:flex;align-items:center;gap:.75rem}
+  .gr-avatar{width:40px;height:40px;border-radius:50%;flex:none;object-fit:cover;background:#e8eaed;color:#5f6368;display:flex;align-items:center;justify-content:center;font-weight:500}
+  .gr-who{min-width:0;flex:1}
+  .gr-name{display:block;font-size:.95rem;font-weight:500;color:#202124;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  a.gr-name:hover{text-decoration:underline}
+  .gr-when{font-size:.8rem;color:#70757a}
+  .gr-text{font-size:.9rem;line-height:1.5;color:#3c4043;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+  .gr-card.open .gr-text{display:block}
+  .gr-more{align-self:flex-start;background:none;border:0;padding:0;font:inherit;font-size:.85rem;color:#1a73e8;cursor:pointer}
+  .gr-link{margin-top:auto;padding-top:.2rem;font-size:.82rem;color:#1a73e8;text-decoration:none}
+  .gr-link:hover,.gr-more:hover{text-decoration:underline}
 
   /* Promos */
   .promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:stretch}
@@ -514,8 +524,8 @@
         <div class="divider"><span class="star"><svg><use href="#ico-star"/></svg></span></div>
         <h2 class="serif">Lo que dicen nuestras clientas</h2>
         <p>La confianza se construye sesión a sesión. Esto es lo que cuentan quienes ya eligieron LUMÉ.</p>
-        <a class="g-summary" id="g-summary" target="_blank" rel="noopener" hidden></a>
       </div>
+      <a class="gr gr-summary" id="g-summary" target="_blank" rel="noopener" hidden></a>
       <div class="reviews-grid" id="reviews-grid"></div>
       <div class="reviews-cta">
         <p>¿Ya viniste a LUMÉ? Nos encantaría leer tu experiencia.</p>
@@ -811,32 +821,42 @@
     $('g-all').href=mapsUrl;
     if(!C.key||!window.fetch)return;
     var NS='http://www.w3.org/2000/svg';
+    var G='<svg class="gr-g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>';
+    function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
     function estrellas(n){
-      var w=document.createElement('span');w.className='stars';w.setAttribute('aria-label',n+' de 5 estrellas');
-      for(var k=1;k<=5;k++){var sv=document.createElementNS(NS,'svg'),u=document.createElementNS(NS,'use');u.setAttribute('href','#ico-star');sv.appendChild(u);if(k>Math.round(n))sv.setAttribute('class','off');w.appendChild(sv);}
+      var w=el('span','gr-stars');w.setAttribute('aria-label',n+' de 5 estrellas');
+      for(var k=1;k<=5;k++){var sv=document.createElementNS(NS,'svg'),p=document.createElementNS(NS,'path');sv.setAttribute('viewBox','0 0 24 24');p.setAttribute('d','M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z');sv.appendChild(p);if(k>Math.round(n))sv.setAttribute('class','off');w.appendChild(sv);}
       return w;
     }
     function pintar(d){
       var url=d.googleMapsUri||mapsUrl;
       $('g-all').href=url;$('g-attr-link').href=url;
       if(d.rating&&d.userRatingCount){
-        var sm=$('g-summary'),b=document.createElement('strong'),t=document.createElement('span');
-        b.textContent=d.rating.toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1});
-        t.textContent=d.userRatingCount+(d.userRatingCount==1?' reseña':' reseñas')+' en Google';
-        sm.append(b,estrellas(d.rating),t);sm.href=url;sm.hidden=false;
+        var sm=$('g-summary'),br=el('span','gr-brand'),sc=el('span','gr-score');
+        br.innerHTML=G;br.appendChild(document.createTextNode('Reseñas de Google'));
+        sc.append(el('b',null,d.rating.toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1})),estrellas(d.rating));
+        sm.append(br,sc,el('span','gr-count',d.userRatingCount+(d.userRatingCount==1?' reseña':' reseñas')));
+        sm.href=url;sm.setAttribute('aria-label','Ver las reseñas de LUMÉ en Google Maps');sm.hidden=false;
       }
       var grid=$('reviews-grid');
       (d.reviews||[]).forEach(function(r){
         var txt=(r.originalText||r.text||{}).text;
         if(!txt||r.rating<C.minEstrellas)return;
-        var a=r.authorAttribution||{},f=document.createElement('figure'),q=document.createElement('blockquote'),cap=document.createElement('figcaption'),who=document.createElement(a.uri?'a':'span'),when=document.createElement('span');
-        f.className='review-card';q.className='review-text';q.textContent=txt;
-        cap.className='review-author';who.textContent='— '+(a.displayName||'Clienta de LUMÉ');
-        if(a.uri){who.href=a.uri;who.target='_blank';who.rel='noopener';}
-        when.className='review-when';when.textContent=r.relativePublishTimeDescription||'';
-        cap.append(who,when);f.append(estrellas(r.rating),q,cap);grid.appendChild(f);
+        var a=r.authorAttribution||{},nombre=a.displayName||'Usuario de Google';
+        var f=el('figure','gr gr-card'),head=el('div','gr-head'),who=el('div','gr-who'),av;
+        if(a.photoUri){av=el('img','gr-avatar');av.src=a.photoUri;av.alt='';av.loading='lazy';av.referrerPolicy='no-referrer';}
+        else av=el('span','gr-avatar',nombre.charAt(0).toUpperCase());
+        var nm=el(a.uri?'a':'span','gr-name',nombre);
+        if(a.uri){nm.href=a.uri;nm.target='_blank';nm.rel='noopener';}
+        who.append(nm,el('div','gr-when',r.relativePublishTimeDescription||''));
+        var g=el('span');g.innerHTML=G;
+        head.append(av,who,g.firstChild);
+        var q=el('blockquote','gr-text',txt);
+        f.append(head,estrellas(r.rating),q);
+        if(r.googleMapsUri){var lk=el('a','gr-link','Ver en Google');lk.href=r.googleMapsUri;lk.target='_blank';lk.rel='noopener';f.appendChild(lk);}
+        grid.appendChild(f);
         if(q.scrollHeight>q.clientHeight+2){
-          var m=document.createElement('button');m.type='button';m.className='review-more';m.textContent='Leer más';
+          var m=el('button','gr-more','Leer más');m.type='button';
           m.onclick=function(){var o=f.classList.toggle('open');m.textContent=o?'Leer menos':'Leer más';};
           q.after(m);
         }
