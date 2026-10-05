@@ -216,14 +216,30 @@
   @media(max-width:860px){.treat-intro{grid-template-columns:1fr;justify-items:center;text-align:center}.treat-media{max-width:300px}}
 
   /* Reseñas */
-  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem}
-  .review-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem 1.8rem;display:flex;flex-direction:column}
+  .reviews-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;animation:fadeup .6s ease both}
+  .reviews-grid:empty{display:none}
+  @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .review-card{flex:1 1 270px;max-width:370px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem 1.8rem;display:flex;flex-direction:column}
   .stars{display:inline-flex;gap:.18rem;color:var(--gold);margin-bottom:1.1rem}
   .stars svg{width:.95rem;height:.95rem;fill:currentColor}
   .review-text{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.18rem;line-height:1.45;color:var(--espresso);flex:1}
   .review-author{margin-top:1.3rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
   .reviews-cta{text-align:center;margin-top:clamp(2.2rem,5vw,3rem);display:flex;flex-direction:column;align-items:center;gap:1.1rem}
   .reviews-cta p{color:var(--mocha);font-size:.98rem}
+  .stars .off{opacity:.25}
+  .review-text{display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+  .review-card.open .review-text{display:block}
+  .review-more{align-self:flex-start;margin-top:.6rem;background:none;border:0;padding:0;font:inherit;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);cursor:pointer}
+  .review-author a{color:inherit;text-decoration:none}
+  .review-author a:hover{text-decoration:underline}
+  .review-when{display:block;margin-top:.3rem;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--mocha);font-weight:400}
+  .g-summary{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.2rem;padding:.5rem 1.1rem;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--espresso);font-size:.92rem;text-decoration:none}
+  .g-summary strong{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--gold-deep);line-height:1}
+  .g-summary .stars{margin:0}
+  .g-summary[hidden],.g-attr[hidden]{display:none}
+  .reviews-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
+  .reviews-cta .g-attr{font-size:.78rem}
+  .g-attr a{color:inherit}
 
   /* Promos */
   .promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:stretch}
@@ -491,40 +507,23 @@
   </section>
 
   <!-- 4. RESEÑAS -->
-  <!-- REEMPLAZAR por reseñas reales de tus clientas. -->
+  <!-- RESEÑAS: se cargan en vivo desde Google Maps (Places API). La clave y el Place ID están en RESENAS, al final del archivo. -->
   <section id="resenas">
     <div class="wrap">
       <div class="sec-head">
         <div class="divider"><span class="star"><svg><use href="#ico-star"/></svg></span></div>
         <h2 class="serif">Lo que dicen nuestras clientas</h2>
         <p>La confianza se construye sesión a sesión. Esto es lo que cuentan quienes ya eligieron LUMÉ.</p>
+        <a class="g-summary" id="g-summary" target="_blank" rel="noopener" hidden></a>
       </div>
-      <div class="reviews-grid">
-        <figure class="review-card">
-          <span class="stars" aria-label="5 de 5 estrellas"><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg></span>
-          <blockquote class="review-text">Hace meses que vengo y los resultados son increíbles. El lugar es súper limpio y la atención, divina.</blockquote>
-          <figcaption class="review-author">— Sofía M.</figcaption>
-        </figure>
-        <figure class="review-card">
-          <span class="stars" aria-label="5 de 5 estrellas"><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg></span>
-          <blockquote class="review-text">Profesionales de verdad. Me explicaron todo en la primera sesión y me sentí re cómoda.</blockquote>
-          <figcaption class="review-author">— Carolina P.</figcaption>
-        </figure>
-        <figure class="review-card">
-          <span class="stars" aria-label="5 de 5 estrellas"><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg></span>
-          <blockquote class="review-text">Ya casi no me sale vello en las axilas. La mejor inversión que hice. ¡Gracias LUMÉ!</blockquote>
-          <figcaption class="review-author">— Brenda R.</figcaption>
-        </figure>
-        <figure class="review-card">
-          <span class="stars" aria-label="5 de 5 estrellas"><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg><svg><use href="#ico-star"/></svg></span>
-          <blockquote class="review-text">El espacio es hermoso y muy tranquilo. Siempre puntuales con los turnos.</blockquote>
-          <figcaption class="review-author">— Daniela G.</figcaption>
-        </figure>
-      </div>
+      <div class="reviews-grid" id="reviews-grid"></div>
       <div class="reviews-cta">
         <p>¿Ya viniste a LUMÉ? Nos encantaría leer tu experiencia.</p>
-        <!-- Reemplazá este link por el de reseñas de tu Google Business Profile (formato https://g.page/r/...) -->
-        <a class="btn btn-ghost" href="https://search.google.com/local/writereview?placeid=TU_PLACE_ID" target="_blank" rel="noopener">Dejá tu reseña en Google</a>
+        <div class="reviews-btns">
+          <a class="btn btn-ghost" id="g-write" href="#" target="_blank" rel="noopener">Dejá tu reseña en Google</a>
+          <a class="btn btn-ghost" id="g-all" href="#" target="_blank" rel="noopener">Ver todas en Google</a>
+        </div>
+        <p class="g-attr" id="g-attr" hidden>Reseñas de <a id="g-attr-link" href="#" target="_blank" rel="noopener">Google Maps</a></p>
       </div>
     </div>
   </section>
@@ -798,6 +797,62 @@
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
     t.forEach(function(el){io.observe(el);});
   }
+</script>
+<script>
+  /* Reseñas en vivo desde Google Maps (Places API New).
+     key: clave de navegador restringida a lumestudio.com.ar y a la Places API.
+     Se pide recién cuando la sección está por aparecer en pantalla. */
+  var RESENAS={key:'',placeId:'',minEstrellas:4};
+  (function(C){
+    if(!C.placeId)return;
+    var $=function(id){return document.getElementById(id);};
+    var mapsUrl='https://www.google.com/maps/place/?q=place_id:'+C.placeId;
+    $('g-write').href='https://search.google.com/local/writereview?placeid='+C.placeId;
+    $('g-all').href=mapsUrl;
+    if(!C.key||!window.fetch)return;
+    var NS='http://www.w3.org/2000/svg';
+    function estrellas(n){
+      var w=document.createElement('span');w.className='stars';w.setAttribute('aria-label',n+' de 5 estrellas');
+      for(var k=1;k<=5;k++){var sv=document.createElementNS(NS,'svg'),u=document.createElementNS(NS,'use');u.setAttribute('href','#ico-star');sv.appendChild(u);if(k>Math.round(n))sv.setAttribute('class','off');w.appendChild(sv);}
+      return w;
+    }
+    function pintar(d){
+      var url=d.googleMapsUri||mapsUrl;
+      $('g-all').href=url;$('g-attr-link').href=url;
+      if(d.rating&&d.userRatingCount){
+        var sm=$('g-summary'),b=document.createElement('strong'),t=document.createElement('span');
+        b.textContent=d.rating.toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1});
+        t.textContent=d.userRatingCount+(d.userRatingCount==1?' reseña':' reseñas')+' en Google';
+        sm.append(b,estrellas(d.rating),t);sm.href=url;sm.hidden=false;
+      }
+      var grid=$('reviews-grid');
+      (d.reviews||[]).forEach(function(r){
+        var txt=(r.originalText||r.text||{}).text;
+        if(!txt||r.rating<C.minEstrellas)return;
+        var a=r.authorAttribution||{},f=document.createElement('figure'),q=document.createElement('blockquote'),cap=document.createElement('figcaption'),who=document.createElement(a.uri?'a':'span'),when=document.createElement('span');
+        f.className='review-card';q.className='review-text';q.textContent=txt;
+        cap.className='review-author';who.textContent='— '+(a.displayName||'Clienta de LUMÉ');
+        if(a.uri){who.href=a.uri;who.target='_blank';who.rel='noopener';}
+        when.className='review-when';when.textContent=r.relativePublishTimeDescription||'';
+        cap.append(who,when);f.append(estrellas(r.rating),q,cap);grid.appendChild(f);
+        if(q.scrollHeight>q.clientHeight+2){
+          var m=document.createElement('button');m.type='button';m.className='review-more';m.textContent='Leer más';
+          m.onclick=function(){var o=f.classList.toggle('open');m.textContent=o?'Leer menos':'Leer más';};
+          q.after(m);
+        }
+      });
+      $('g-attr').hidden=false;
+    }
+    function cargar(){
+      fetch('https://places.googleapis.com/v1/places/'+C.placeId+'?languageCode=es&regionCode=AR',{headers:{'X-Goog-Api-Key':C.key,'X-Goog-FieldMask':'rating,userRatingCount,googleMapsUri,reviews'}})
+        .then(function(r){if(!r.ok)throw r.status;return r.json();}).then(pintar).catch(function(){});
+    }
+    var sec=$('resenas');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();cargar();}},{rootMargin:'600px 0px'});
+      io.observe(sec);
+    }else cargar();
+  })(RESENAS);
 </script>
 
 </body>
